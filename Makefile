@@ -1,6 +1,6 @@
 # Modified from original to make use of cross-dev environment
 
-OBJECTS = loader.o kmain.o
+OBJECTS = loader.o kmain.o io.o vga.o
 CC = i686-elf-gcc
 CFLAGS = -ffreestanding -O2 -Wall -Wextra -c
 LDFLAGS = -T link.ld -ffreestanding -O2 -nostdlib -lgcc
