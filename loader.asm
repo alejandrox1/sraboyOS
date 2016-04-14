@@ -1,7 +1,5 @@
 global loader                   ; the entry symbol for ELF
 
-extern kmain
-
 ; ************* Constants *************
 KERNEL_STACK_SIZE equ 4096
 MAGIC_NUMBER equ 0x1BADB002     ; multiboot's file signature/magic number
@@ -25,8 +23,12 @@ align 4                         ; must be 4 byte aligned
 
 ; ************* loader *************
 loader:                         ; the loader label (defined as entry point in linker script)
-	;mov eax, 0xCAFEBABE         ; place the number 0xCAFEBABE in the register eax
+	;mov eax, 0xCAFEBABE        ; place the number 0xCAFEBABE in the register eax
 	mov esp, kernel_stack + KERNEL_STACK_SIZE	;point ESP to top of stack (since it grows downward)
-.loop:
+
+	extern kmain
 	call kmain
+	cli
+.loop:
+	hlt
 	jmp .loop                   ; loop forever
