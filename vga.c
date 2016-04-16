@@ -42,18 +42,18 @@ void put_char(uint8_t c, struct cursor_pos* cpos, struct terminal_color* tcol) {
 	uint8_t fg = tcol->foreground;
 	uint8_t bg = tcol->background;
 
-	//with uint8_t* framebuffer
-	//uint8_t color = bg << 4 | fg;
-	//int pos = (cpos->row * 2 * VGA_BUF_COLS) + (cpos->column * 2);
-	//framebuffer[pos] = c16;
-	//framebuffer[++pos] = color;
-
 	uint16_t color = (bg << 4 | fg) << 8;
 	int pos = (cpos->row * VGA_BUF_COLS) + cpos->column;
 	uint16_t value = c16 | color;
-	framebuffer[pos] = value;
 
-	if(++(cpos->column) >= VGA_BUF_COLS) {
+	if(c != '\n') {
+		framebuffer[pos] = value;
+
+		if(++(cpos->column) >= VGA_BUF_COLS) {
+			cpos->column = 0;
+			cpos->row++;
+		}
+	} else {
 		cpos->column = 0;
 		cpos->row++;
 	}
@@ -80,8 +80,6 @@ void put_char(uint8_t c, struct cursor_pos* cpos, struct terminal_color* tcol) {
  *
  */
 void move_cursor(uint16_t pos) {
-	//if(pos >= VGA_BUF_SIZE * 2)
-	//	vga_buf_init(); //scroll_terminal();
 
 	outb(VGA_BUF_CMD_PORT, VGA_BUF_HIGH_BYTE_CMD);
 	outb(VGA_BUF_DAT_PORT, (uint8_t)((pos >> 8) & 0x00ff));
