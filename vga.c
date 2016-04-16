@@ -6,15 +6,31 @@
 #define VGA_BUF_CMD_PORT 0x03d4
 #define VGA_BUF_DAT_PORT 0x03d5
 #define VGA_BUF_ADDR 0x000b8000
+#define VGA_BUF_COLS 80
+#define VGA_BUF_ROWS 25
 #define VGA_BUF_SIZE 2000 //in chars/positions: 80 columns * 25 rows
 
+//the second byte in the pos is for color info
+//#define CHECKPOS() if(pos % 2 != 0 || pos >= VGA_BUF_SIZE * 2) return INVALID_CHAR_ADDR;
+
 char * framebuffer = VGA_BUF_ADDR;
-short fb_pos = 0;
+short fb_pos;
+
+struct cursor_pos {
+	short row;
+	short column;
+} cursor_pos_t;
 
 void vga_buf_init() {
 	for(int i = 0; i < VGA_BUF_SIZE; i+=2) {
-		put_char(i, ' ', COLOR_GREEN, COLOR_BLACK);
+		put_char(' ', COLOR_GREEN, COLOR_BLACK);
 	}
+
+	fb_pos = 0;
+	cursor_pos_t.row = 0;
+	cursor_pos_t.column = 0;
+
+	move_cursor(0);
 }
 
 /** put_char:
@@ -24,14 +40,22 @@ void vga_buf_init() {
  *  @param text_color	foreground color
  *  @param bg_color		background color
  */
-int put_char(int pos, char c, unsigned char text_color, unsigned char bg_color) {
-	if(pos % 2 != 0 || pos >= 2000)
-		return INVALID_CHAR_ADDR;
+void put_char(char c, unsigned char text_color, unsigned char bg_color) {
+	//CHECKPOS();
+	//fb_pos = pos;
 
-	framebuffer[pos] = c;
-	framebuffer[pos + 1] = text_color | (bg_color << 4);
+	/*switch(c) {
+		case '\n':
+			fb_pos += VGA_BUF_COLS * 2;//(VGA_BUF_COLS - len + 1) * 2; //+1 to compensate for 0-index
+			move_cursor(fb_pos / 2);
+	}*/
 
-	return SUCCESS;
+	framebuffer[(cursor_pos_t.row * VGA_BUF_COLS) + cursor_pos_t.column] = c;
+	framebuffer[++cursor_pos_t.column] = text_color | (bg_color << 4);
+	cursor_pos_t.column++;
+	//if(pos >= VGA_BUF_SIZE * 2 - 2) {
+	//	scroll_terminal();
+	//}
 }
 
 /** move_cursor:
@@ -54,17 +78,14 @@ int put_char(int pos, char c, unsigned char text_color, unsigned char bg_color) 
  *
  * 	@param pos	location to move the cursor to
  */
-int move_cursor(unsigned short pos) {
-
-	if(pos % 2 != 0 || pos >= 2000)
-		return INVALID_CHAR_ADDR;
+void move_cursor(unsigned short pos) {
+	//if(pos >= VGA_BUF_SIZE * 2)
+	//	vga_buf_init(); //scroll_terminal();
 
 	outb(VGA_BUF_CMD_PORT, VGA_BUF_HIGH_BYTE_CMD);
 	outb(VGA_BUF_DAT_PORT, (unsigned char)((pos >> 8) & 0x00ff));
 	outb(VGA_BUF_CMD_PORT, VGA_BUF_LOW_BYTE_CMD);
 	outb(VGA_BUF_DAT_PORT, (unsigned char)(pos & 0x00ff));
-
-	return SUCCESS;
 }
 
 /** print:
@@ -75,8 +96,22 @@ int move_cursor(unsigned short pos) {
  */
 void print(char * string, int len) {
 	for(int i = 0; i < len; i++) {
-		put_char(fb_pos, string[i], COLOR_GREEN, COLOR_BLACK);
-		fb_pos += 2;
-		move_cursor(fb_pos / 2);
+		put_char(string[i], COLOR_GREEN, COLOR_BLACK);
+		//move_cursor((fb_pos / 2));
 	}
+}
+
+void scroll_terminal() {
+	//copy all lines to the line above
+	for(int src = 80, dest = 0; src < VGA_BUF_SIZE * 2; src++, dest++) {
+		framebuffer[dest] = framebuffer[src];
+	}
+
+	//1920 = first char in last row
+	//for(int i = 1920; i < VGA_BUF_SIZE * 2; i++) {
+	//	put_char(i, ' ', COLOR_GREEN, COLOR_BLACK);
+	//}
+
+	fb_pos = 1920 * 2;
+	//move_cursor(fb_pos);
 }
