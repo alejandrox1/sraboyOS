@@ -9,7 +9,7 @@
 #define VGA_BUF_ADDR 0x000b8000
 #define VGA_BUF_COLS 80
 #define VGA_BUF_ROWS 25
-//#define VGA_BUF_SIZE 2000 //in chars/positions: 80 columns * 25 rows
+#define VGA_BUF_SIZE 2000 //in chars/positions: 80 columns * 25 rows
 
 //the second byte in the pos is for color info
 //#define CHECKPOS() if(pos % 2 != 0 || pos >= VGA_BUF_SIZE * 2) return INVALID_CHAR_ADDR;
@@ -58,6 +58,11 @@ void put_char(uint8_t c, struct cursor_pos* cpos, struct terminal_color* tcol) {
 		cpos->row++;
 	}
 
+	if(cpos->row > VGA_BUF_ROWS) {
+		pos = (VGA_BUF_ROWS - 1) * VGA_BUF_COLS;
+		scroll_terminal();
+	}
+
 	move_cursor(pos);
 }
 
@@ -96,13 +101,12 @@ void move_cursor(uint16_t pos) {
 void print(uint8_t * string, int len) {
 	for(int i = 0; i < len; i++) {
 		put_char(string[i], &cursor_pos_t, &terminal_color_t);
-
 	}
 }
 
 void scroll_terminal() {
 	//copy all lines to the line above
-	/*for(int src = 80, dest = 0; src < VGA_BUF_SIZE * 2; src++, dest++) {
+	for(int src = 80, dest = 0; src < VGA_BUF_SIZE * 2; src++, dest++) {
 		framebuffer[dest] = framebuffer[src];
 	}
 
@@ -111,6 +115,6 @@ void scroll_terminal() {
 	//	put_char(i, ' ', COLOR_GREEN, COLOR_BLACK);
 	//}
 
-	fb_pos = 1920 * 2;
+	//fb_pos = 1920 * 2;
 	//move_cursor(fb_pos);*/
 }

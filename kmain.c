@@ -6,7 +6,11 @@ int kmain(void) {
 
 	print("sraboyos v0.1\n", 14);
 	print("welcome!\n", 9);
-/*
+	test_scroll();
+	return x;
+}
+
+void test_scroll() {
 	print("3\n", 2);
 	print("4\n", 2);
 	print("5\n", 2);
@@ -17,7 +21,6 @@ int kmain(void) {
 	print("10\n", 3);
 	print("11\n", 3);
 	print("13\n", 3);
-	print("scroll", 6);
 	print("14\n", 3);
 	print("15\n", 3);
 	print("16\n", 3);
@@ -32,8 +35,5 @@ int kmain(void) {
 	print("25\n", 3);
 	print("26\n", 3);
 	print("27\n", 3);
-	*/
-	return x;
 }
-
 
