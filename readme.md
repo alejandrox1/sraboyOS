@@ -25,7 +25,7 @@ Assemble: `nasm -felf32 loader.asm`
 
 Link: `ld -T link.ld -melf_i386 loader.o -o kernel.elf` or, if you've set up a cross-compilation environment like [this OSDev tutorial](http://wiki.osdev.org/GCC_Cross-Compiler), `i686-elf-gcc -T link.ld -o kernel.elf -ffreestanding -O2 -nostdlib loader.o kmain.o -lgcc`
 
-Compile: `i686-elf-gcc -T link.ld -o kernel.elf -ffreestanding -O2 -nostdlib loader.o kmain.o -lgcc`
+Compile: `i686-elf-gcc -Iinclude -T link.ld -o kernel.elf -ffreestanding -O2 -nostdlib loader.o kmain.o -lgcc`
 
 Generate ISO:
 

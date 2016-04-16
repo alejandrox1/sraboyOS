@@ -1,6 +1,7 @@
 # Modified from original to make use of cross-dev environment
 
 OBJECTS = loader.o kmain.o io.o vga.o
+INC = include
 CC = i686-elf-gcc
 CFLAGS = -ffreestanding -O2 -Wall -Wextra -c
 LDFLAGS = -T link.ld -ffreestanding -O2 -nostdlib -lgcc
@@ -29,7 +30,7 @@ run: myos.iso
 	qemu-system-i386 -cdrom myos.iso -s
 
 %.o: %.c
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) -I$(INC) $(CFLAGS) $< -o $@
 
 %.o: %.asm
 	$(AS) $(ASFLAGS) $< -o $@
