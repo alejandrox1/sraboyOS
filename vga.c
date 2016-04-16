@@ -1,5 +1,6 @@
 #include "vga.h"
 #include "io.h"
+#include "stddef.h"
 
 #define VGA_BUF_HIGH_BYTE_CMD 0x0e
 #define VGA_BUF_LOW_BYTE_CMD  0x0f
@@ -17,8 +18,8 @@ char * framebuffer = VGA_BUF_ADDR;
 short fb_pos;
 
 struct cursor_pos {
-	short row;
-	short column;
+	uint16_t row;
+	uint16_t column;
 } cursor_pos_t;
 
 void vga_buf_init() {

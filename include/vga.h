@@ -21,7 +21,7 @@ enum vga_color {
 };
 
 void put_char(char c, unsigned char text_color, unsigned char bg_color);
-void move_cursor(unsigned short pos);
+void move_cursor(uint16_t pos);
 void print(char * string, int len);
 
 #endif //INCLUDE_VGA_H
