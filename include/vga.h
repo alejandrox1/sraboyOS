@@ -1,6 +1,8 @@
 #ifndef INCLUDE_VGA_H
 #define INCLUDE_VGA_H
 
+#include "stddef.h"
+
 enum vga_color {
 	COLOR_BLACK = 0,
 	COLOR_BLUE = 1,
@@ -20,8 +22,18 @@ enum vga_color {
 	COLOR_WHITE = 15,
 };
 
-void put_char(char c, unsigned char text_color, unsigned char bg_color);
+struct cursor_pos {
+	uint16_t row;
+	uint16_t column;
+};
+
+struct terminal_color {
+	enum vga_color foreground;
+	enum vga_color background;
+};
+
+void put_char(uint8_t c, struct cursor_pos* cpos, struct terminal_color* tcol);
 void move_cursor(uint16_t pos);
-void print(char * string, int len);
+void print(uint8_t * string, int len);
 
 #endif //INCLUDE_VGA_H

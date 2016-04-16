@@ -9,54 +9,56 @@
 #define VGA_BUF_ADDR 0x000b8000
 #define VGA_BUF_COLS 80
 #define VGA_BUF_ROWS 25
-#define VGA_BUF_SIZE 2000 //in chars/positions: 80 columns * 25 rows
+//#define VGA_BUF_SIZE 2000 //in chars/positions: 80 columns * 25 rows
 
 //the second byte in the pos is for color info
 //#define CHECKPOS() if(pos % 2 != 0 || pos >= VGA_BUF_SIZE * 2) return INVALID_CHAR_ADDR;
 
-char * framebuffer = VGA_BUF_ADDR;
-short fb_pos;
+uint16_t* framebuffer = VGA_BUF_ADDR;
 
-struct cursor_pos {
-	uint16_t row;
-	uint16_t column;
-} cursor_pos_t;
+
+
+static struct cursor_pos cursor_pos_t = { .row = 0, .column = 0 };
+static struct terminal_color terminal_color_t = { .foreground = COLOR_LIGHT_GREEN,
+												  .background = COLOR_BLACK };
+//struct cursor_pos* cpos = &cursor_pos_t;
+//struct terminal_color* tcol = &terminal_color_t;
 
 void vga_buf_init() {
-	for(int i = 0; i < VGA_BUF_SIZE; i+=2) {
-		put_char(' ', COLOR_GREEN, COLOR_BLACK);
+	for(int y = 0; y < VGA_BUF_ROWS; y++) {
+		for(int x = 0; x < VGA_BUF_COLS; x++) {
+			put_char(' ', &cursor_pos_t, &terminal_color_t);
+		}
 	}
 
-	fb_pos = 0;
 	cursor_pos_t.row = 0;
 	cursor_pos_t.column = 0;
 
 	move_cursor(0);
 }
 
-/** put_char:
- *  Outputs a character to the framebuffer
- *  @param pos  		location in the framebuffer
- *  @param c    		character to write
- *  @param text_color	foreground color
- *  @param bg_color		background color
- */
-void put_char(char c, unsigned char text_color, unsigned char bg_color) {
-	//CHECKPOS();
-	//fb_pos = pos;
+void put_char(uint8_t c, struct cursor_pos* cpos, struct terminal_color* tcol) {
+	uint16_t c16 = c;
+	uint8_t fg = tcol->foreground;
+	uint8_t bg = tcol->background;
 
-	/*switch(c) {
-		case '\n':
-			fb_pos += VGA_BUF_COLS * 2;//(VGA_BUF_COLS - len + 1) * 2; //+1 to compensate for 0-index
-			move_cursor(fb_pos / 2);
-	}*/
+	//with uint8_t* framebuffer
+	//uint8_t color = bg << 4 | fg;
+	//int pos = (cpos->row * 2 * VGA_BUF_COLS) + (cpos->column * 2);
+	//framebuffer[pos] = c16;
+	//framebuffer[++pos] = color;
 
-	framebuffer[(cursor_pos_t.row * VGA_BUF_COLS) + cursor_pos_t.column] = c;
-	framebuffer[++cursor_pos_t.column] = text_color | (bg_color << 4);
-	cursor_pos_t.column++;
-	//if(pos >= VGA_BUF_SIZE * 2 - 2) {
-	//	scroll_terminal();
-	//}
+	uint16_t color = (bg << 4 | fg) << 8;
+	int pos = (cpos->row * VGA_BUF_COLS) + cpos->column;
+	uint16_t value = c16 | color;
+	framebuffer[pos] = value;
+
+	if(++(cpos->column) >= VGA_BUF_COLS) {
+		cpos->column = 0;
+		cpos->row++;
+	}
+
+	move_cursor(pos);
 }
 
 /** move_cursor:
@@ -67,7 +69,6 @@ void put_char(char c, unsigned char text_color, unsigned char bg_color) {
  * out 0x3D4, 15      ; tell framebuffer to expect low 8 bits of pos
  * out 0x3D5, 0x50    ; send the lowest 8 bits of 0x50
  *
- *
  * ; stack:  [esp + 8] data
  * ;		 [esp + 4] I/O port
  * ;		 [esp    ] return addr
@@ -77,16 +78,15 @@ void put_char(char c, unsigned char text_color, unsigned char bg_color) {
  * 	 out dx, al			; outb(unsigned short port, unsigned char data)
  *   ret
  *
- * 	@param pos	location to move the cursor to
  */
-void move_cursor(unsigned short pos) {
+void move_cursor(uint16_t pos) {
 	//if(pos >= VGA_BUF_SIZE * 2)
 	//	vga_buf_init(); //scroll_terminal();
 
 	outb(VGA_BUF_CMD_PORT, VGA_BUF_HIGH_BYTE_CMD);
-	outb(VGA_BUF_DAT_PORT, (unsigned char)((pos >> 8) & 0x00ff));
+	outb(VGA_BUF_DAT_PORT, (uint8_t)((pos >> 8) & 0x00ff));
 	outb(VGA_BUF_CMD_PORT, VGA_BUF_LOW_BYTE_CMD);
-	outb(VGA_BUF_DAT_PORT, (unsigned char)(pos & 0x00ff));
+	outb(VGA_BUF_DAT_PORT, (uint8_t)(pos & 0x00ff));
 }
 
 /** print:
@@ -95,16 +95,16 @@ void move_cursor(unsigned short pos) {
  * 	@param string	the string to print
  *  @param len		the length of the string, excluding null terminator
  */
-void print(char * string, int len) {
+void print(uint8_t * string, int len) {
 	for(int i = 0; i < len; i++) {
-		put_char(string[i], COLOR_GREEN, COLOR_BLACK);
-		//move_cursor((fb_pos / 2));
+		put_char(string[i], &cursor_pos_t, &terminal_color_t);
+
 	}
 }
 
 void scroll_terminal() {
 	//copy all lines to the line above
-	for(int src = 80, dest = 0; src < VGA_BUF_SIZE * 2; src++, dest++) {
+	/*for(int src = 80, dest = 0; src < VGA_BUF_SIZE * 2; src++, dest++) {
 		framebuffer[dest] = framebuffer[src];
 	}
 
@@ -114,5 +114,5 @@ void scroll_terminal() {
 	//}
 
 	fb_pos = 1920 * 2;
-	//move_cursor(fb_pos);
+	//move_cursor(fb_pos);*/
 }
