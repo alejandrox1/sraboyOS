@@ -7,13 +7,14 @@ CFLAGS = -ffreestanding -O2 -Wall -Wextra -c
 LDFLAGS = -T link.ld -ffreestanding -O2 -nostdlib -lgcc
 AS = nasm
 ASFLAGS = -felf32
+ISONAME = sraboyos.iso
 
 all: kernel.elf
 
 kernel.elf: $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) -o kernel.elf
 
-myos.iso: kernel.elf
+makeiso: kernel.elf
 	cp kernel.elf isodir/boot/kernel.elf
 	genisoimage -R                          \
 			-b boot/grub/stage2_eltorito    \
@@ -23,11 +24,11 @@ myos.iso: kernel.elf
 			-input-charset utf8             \
 			-quiet                          \
 			-boot-info-table                \
-			-o myos.iso                     \
+			-o $(ISONAME)                   \
 			isodir
 
-run: myos.iso
-	qemu-system-i386 -cdrom myos.iso -s
+run: makeiso
+	qemu-system-i386 -cdrom $(ISONAME) -s
 
 %.o: %.c
 	$(CC) -I$(INC) $(CFLAGS) $< -o $@
@@ -36,4 +37,4 @@ run: myos.iso
 	$(AS) $(ASFLAGS) $< -o $@
 
 clean:
-	rm -rf *.o kernel.elf myos.iso
+	rm -rf *.o kernel.elf $(ISONAME)
