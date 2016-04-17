@@ -9,12 +9,12 @@ int kmain(void) {
 	print("sraboyos v0.1\n", 14);
 	print("welcome!\n", 9);
 	//test_scroll();
-	test_serial();
+	test_serial_write();
 
 	return x;
 }
 
-void test_serial() {
+void test_serial_write() {
 	uint16_t port = 0x3f8;
 	serial_conf_baud_rate(port, 3);
 	serial_conf_line(port, 0x3);
