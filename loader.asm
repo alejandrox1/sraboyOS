@@ -27,8 +27,8 @@ loader:                         ; the loader label (defined as entry point in li
 	mov esp, kernel_stack + KERNEL_STACK_SIZE	;point ESP to top of stack (since it grows downward)
 
 	extern kmain
-	call kmain
 	cli
+	call kmain
 .loop:
 	hlt
 	jmp .loop                   ; loop forever

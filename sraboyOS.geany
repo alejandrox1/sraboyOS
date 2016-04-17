@@ -28,14 +28,16 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=2
-FILE_NAME_0=826;Make;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2FMakefile;0;4
+current_page=5
+FILE_NAME_0=311;Make;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2FMakefile;0;4
 FILE_NAME_1=0;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Floader.asm;0;4
-FILE_NAME_2=183;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fio.asm;0;4
-FILE_NAME_3=630;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkmain.c;0;4
-FILE_NAME_4=2771;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fvga.c;0;4
-FILE_NAME_5=693;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fvga.h;0;4
-FILE_NAME_6=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fserial.c;0;4
+FILE_NAME_2=43;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fio.h;0;4
+FILE_NAME_3=11;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fio.asm;0;4
+FILE_NAME_4=297;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkmain.c;0;4
+FILE_NAME_5=1205;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fvga.c;0;4
+FILE_NAME_6=693;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fvga.h;0;4
+FILE_NAME_7=3319;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fserial.c;0;4
+FILE_NAME_8=352;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fserial.h;0;4
 
 [VTE]
 last_dir=/home/steve/programming/mishmash/osdev

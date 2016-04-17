@@ -37,6 +37,14 @@ Generate ISO:
                 -o myos.iso                     \
                 isodir
 
-Run QEMU: `qemu-system-i386 -kernel kernel.elf -s &` or `qemu-system-i386 -cdrom myos.iso -s -serial stdio`. The `s` tells QEMU to listen for a debugger on port 1234 and the `-serial stdio` tell QEMU to dump serial output to the terminal you ran it from.
+Run QEMU:
+ - `qemu-system-i386 -kernel kernel.elf [options]`
+ - `-s` tells QEMU to listen for a debugger on port 1234
+ - `-serial stdio` QEMU will dump serial output to the terminal
+ - `-S` will immediately halt upon opening so you can, for example, debug the loader
 
-Run GDB: `gdbtui` then `target remote localhost:1234`
+Run GDB:
+ - `gdbtui` I like the TUI
+ - `target remote localhost:1234`
+ - `file kernel.elf` loads debugging symbols from the file
+ - `set disassembly-flavor intel` (if you're so inclined, you can put this in .gdbinit)

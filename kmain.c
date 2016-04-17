@@ -1,6 +1,7 @@
 #include "vga.h"
 #include "serial.h"
 #include "stddef.h"
+#include "descriptor_tables.h"
 
 int kmain(void) {
 	int x = 0xdeadbeef;
@@ -8,10 +9,20 @@ int kmain(void) {
 
 	print("sraboyos v0.1\n", 14);
 	print("welcome!\n", 9);
+
+	init_descriptor_tables();
+	print("Descriptor Tables Loaded!\n", 26);
+
 	//test_scroll();
-	test_serial_write();
+	//test_serial_write();
+	test_interrupts();
 
 	return x;
+}
+
+void test_interrupts() {
+	asm volatile ("int $0x3");
+	asm volatile ("int $0x4");
 }
 
 void test_serial_write() {

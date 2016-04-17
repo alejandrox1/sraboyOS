@@ -1,9 +1,10 @@
 # Modified from original to make use of cross-dev environment
 
-OBJECTS = loader.o kmain.o io.o vga.o serial.o
+OBJECTS = loader.o idt_gdt_loader.o isr_helper.o io.o \
+		  kmain.o isr.o vga.o serial.o descriptor_tables.o
 INC = include
 CC = i686-elf-gcc
-CFLAGS = -ffreestanding -O2 -Wall -Wextra -c
+CFLAGS = -ffreestanding -O2 -Wall -Wextra -c -ggdb
 LDFLAGS = -T link.ld -ffreestanding -O2 -nostdlib -lgcc
 AS = nasm
 ASFLAGS = -felf32
