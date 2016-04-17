@@ -1,6 +1,6 @@
 # Intro
 
-This is just me following along with https://littleosbook.github.io.
+This is a learning project in kernel and driver development. I'm using the [Little OS Book](https://littleosbook.github.io) as a basis but also heavily relying on the [OSDev Wiki](http://wiki.osdev.org/). I prefer QEMU over Bochs so see below (or the Makefile) for the differences in setup.
 
 # Environment
 
@@ -9,17 +9,14 @@ I use VirtualBox and QEMU:
 - Guest: Debian Jessie 8.4 (w/ Guest Additions)
   - Nested guest: qemu-system-i386
 
-I did a couple things differently from the tutorial:
 
-Primarily, I'm using a nested VM. Also, I already had QEMU installed and didn't want to also install Bochs so I use QEMU and **[gdbtui](https://sourceware.org/gdb/onlinedocs/gdb/TUI.html)**).
-
-Until/unless you need a file system, you also don't need to build the ISO since you can just pass the `kernel` parameter and kernel image to QEMU. Once you do want to use an ISO, just use the `cdrom` parameter and the ISO file.
-
-**NOTE:** Be sure to check your host keys. I like to use CTRL+ALT with VirtualBox, to match VMWare since I use that too, but that's also QEMU's default. If you end up clicking inside the QEMU window, it will capture your mouse and QEMU's default host key is also CTRL+ALT. VirtualBox will not send CTRL+ALT to the guest so you won't be able to get out unless you have Guest Additions installed, which will let your mouse leave the Debian guest (but can't help you the QEMU guest). You can change the host key at runtime too so it's not a big deal, as long as you can get your mouse back to the host.
+**NOTE:** Be sure to check your host keys if using a nested VM setup like mine. I like to use CTRL+ALT with VirtualBox, to match VMWare since I use that too, but that's also QEMU's default. If you end up clicking inside the QEMU window, it will capture your mouse and QEMU's default host key is also CTRL+ALT. VirtualBox will not send CTRL+ALT to the guest so you won't be able to get out unless you have Guest Additions installed, which will let your mouse leave the Debian guest (but can't help you the QEMU guest). You can change the host key at runtime too so it's not a big deal, as long as you can get your mouse back to the host.
 
 # Build
 
-You can just use the Makefile but here's the quick and dirty of it:
+You'll need a GCC cross-compilation environment setup; there's a handy tutorial [on OSDEV's wiki](http://wiki.osdev.org/GCC_Cross-Compiler). You should just use the Makefile but below are some quick and dirty examples for building. Note that these examples are not complete since I won't be updating them every time I add a new file or change something so check out the Makefile.
+
+The Little OS Book has a slightly different setup, which can be found [here](https://littleosbook.github.io/#build-system).
 
 Assemble: `nasm -felf32 loader.asm`
 
@@ -40,6 +37,6 @@ Generate ISO:
                 -o myos.iso                     \
                 isodir
 
-Run QEMU: `qemu-system-i386 -kernel kernel.elf -s &` or `qemu-system-i386 -cdrom myos.iso -s &`. The `s` tells QEMU to listen for a debugger on port 1234.
+Run QEMU: `qemu-system-i386 -kernel kernel.elf -s &` or `qemu-system-i386 -cdrom myos.iso -s -serial stdio`. The `s` tells QEMU to listen for a debugger on port 1234 and the `-serial stdio` tell QEMU to dump serial output to the terminal you ran it from.
 
 Run GDB: `gdbtui` then `target remote localhost:1234`
