@@ -109,12 +109,4 @@ void scroll_terminal() {
 	for(int src = 80, dest = 0; src < VGA_BUF_SIZE * 2; src++, dest++) {
 		framebuffer[dest] = framebuffer[src];
 	}
-
-	//1920 = first char in last row
-	//for(int i = 1920; i < VGA_BUF_SIZE * 2; i++) {
-	//	put_char(i, ' ', COLOR_GREEN, COLOR_BLACK);
-	//}
-
-	//fb_pos = 1920 * 2;
-	//move_cursor(fb_pos);*/
 }
