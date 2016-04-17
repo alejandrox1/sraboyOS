@@ -28,17 +28,26 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=9
-FILE_NAME_0=0;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fio.asm;0;4
-FILE_NAME_1=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fio.h;0;4
-FILE_NAME_2=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkmain.c;0;4
-FILE_NAME_3=0;None;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Flink.ld;0;4
-FILE_NAME_4=0;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Floader.asm;0;4
-FILE_NAME_5=0;Make;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2FMakefile;0;4
-FILE_NAME_6=0;Markdown;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Freadme.md;0;4
-FILE_NAME_7=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fvga.c;0;4
-FILE_NAME_8=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fvga.h;0;4
-FILE_NAME_9=54;None;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fisodir%2Fboot%2Fgrub%2Fmenu.lst;0;4
+current_page=2
+FILE_NAME_0=826;Make;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2FMakefile;0;4
+FILE_NAME_1=0;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Floader.asm;0;4
+FILE_NAME_2=183;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fio.asm;0;4
+FILE_NAME_3=630;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkmain.c;0;4
+FILE_NAME_4=2771;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fvga.c;0;4
+FILE_NAME_5=693;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fvga.h;0;4
+FILE_NAME_6=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fserial.c;0;4
 
 [VTE]
 last_dir=/home/steve/programming/mishmash/osdev
+
+[build-menu]
+NF_00_LB=_Make
+NF_00_CM=make
+NF_00_WD=
+EX_00_LB=_Execute
+EX_00_CM=make run
+EX_00_WD=
+ASMFT_00_LB=_Compile
+ASMFT_00_CM=
+ASMFT_00_WD=
+filetypes=ASM;

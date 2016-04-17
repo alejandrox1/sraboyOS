@@ -1,4 +1,6 @@
 #include "vga.h"
+#include "serial.h"
+#include "stddef.h"
 
 int kmain(void) {
 	int x = 0xdeadbeef;
@@ -6,8 +8,21 @@ int kmain(void) {
 
 	print("sraboyos v0.1\n", 14);
 	print("welcome!\n", 9);
-	test_scroll();
+	//test_scroll();
+	test_serial();
+
 	return x;
+}
+
+void test_serial() {
+	uint16_t port = 0x3f8;
+	serial_conf_baud_rate(port, 3);
+	serial_conf_line(port, 0x3);
+	serial_conf_buff(port, 0xc7);
+	serial_conf_modem(port, 0xb);
+
+	uint8_t * stuff = "stuff";
+	serial_write(port, stuff, 5);
 }
 
 void test_scroll() {

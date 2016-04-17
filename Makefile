@@ -1,6 +1,6 @@
 # Modified from original to make use of cross-dev environment
 
-OBJECTS = loader.o kmain.o io.o vga.o
+OBJECTS = loader.o kmain.o io.o vga.o serial.o
 INC = include
 CC = i686-elf-gcc
 CFLAGS = -ffreestanding -O2 -Wall -Wextra -c
@@ -27,8 +27,11 @@ makeiso: kernel.elf
 			-o $(ISONAME)                   \
 			isodir
 
+# -s = allow remote GDB on port 1234
+# -serial = output serial contents to [file:filename.txt | stdio]
 run: makeiso
-	qemu-system-i386 -cdrom $(ISONAME) -s
+	qemu-system-i386 -cdrom $(ISONAME) -s -serial stdio
+
 
 %.o: %.c
 	$(CC) -I$(INC) $(CFLAGS) $< -o $@
