@@ -16,13 +16,9 @@
 
 uint16_t* framebuffer = VGA_BUF_ADDR;
 
-
-
 static struct cursor_pos cursor_pos_t = { .row = 0, .column = 0 };
 static struct terminal_color terminal_color_t = { .foreground = COLOR_LIGHT_GREEN,
 												  .background = COLOR_BLACK };
-//struct cursor_pos* cpos = &cursor_pos_t;
-//struct terminal_color* tcol = &terminal_color_t;
 
 void vga_buf_init() {
 	for(int y = 0; y < VGA_BUF_ROWS; y++) {
@@ -59,6 +55,7 @@ void put_char(uint8_t c, struct cursor_pos* cpos, struct terminal_color* tcol) {
 	}
 
 	if(cpos->row > VGA_BUF_ROWS) {
+		cpos->row--;
 		pos = (VGA_BUF_ROWS - 1) * VGA_BUF_COLS;
 		scroll_terminal();
 	}
