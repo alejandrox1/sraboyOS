@@ -16,7 +16,7 @@ int kmain(void) {
 	//test_scroll();
 	//test_serial_write();
 	//test_interrupts();
-	init_timer(50); //about 5ms
+	//init_timer(100); //about 10ms
 
 	return x;
 }

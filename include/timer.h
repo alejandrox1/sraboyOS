@@ -4,6 +4,6 @@
 #include "stddef.h"
 
 void init_timer(uint32_t freq);
-static void timer_callback(struct registers regs);
+//static void timer_callback(struct registers regs);
 
 #endif
