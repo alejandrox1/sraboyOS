@@ -25,4 +25,5 @@ void init_timer(uint32_t freq) {
 
 	outb(0x40, l);
 	outb(0x40, h);
+	asm("sti");
 }
