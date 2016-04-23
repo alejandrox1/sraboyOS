@@ -15,7 +15,8 @@ int kmain(void) {
 
 	//test_scroll();
 	//test_serial_write();
-	test_interrupts();
+	//test_interrupts();
+	init_timer(50); //about 5ms
 
 	return x;
 }
@@ -61,5 +62,6 @@ void test_scroll() {
 	print("25\n", 3);
 	print("26\n", 3);
 	print("27\n", 3);
+	print("28\n", 3);
 }
 
