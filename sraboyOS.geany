@@ -28,16 +28,17 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=5
-FILE_NAME_0=311;Make;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2FMakefile;0;4
-FILE_NAME_1=0;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Floader.asm;0;4
-FILE_NAME_2=43;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fio.h;0;4
-FILE_NAME_3=11;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fio.asm;0;4
-FILE_NAME_4=297;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkmain.c;0;4
-FILE_NAME_5=1205;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fvga.c;0;4
-FILE_NAME_6=693;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fvga.h;0;4
-FILE_NAME_7=3319;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fserial.c;0;4
-FILE_NAME_8=352;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fserial.h;0;4
+current_page=8
+FILE_NAME_0=346;Make;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2FMakefile;0;4
+FILE_NAME_1=813;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Floader.asm;0;4
+FILE_NAME_2=410;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkmain.c;0;4
+FILE_NAME_3=1057;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fdescriptor_tables.h;0;4
+FILE_NAME_4=3184;C;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fdescriptor_tables.c;0;4
+FILE_NAME_5=2515;ASM;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fisr_helper.asm;0;4
+FILE_NAME_6=1656;C;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fisr.h;0;4
+FILE_NAME_7=268;C;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fisr.c;0;4
+FILE_NAME_8=397;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Ftimer.c;0;4
+FILE_NAME_9=104;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Ftimer.h;0;4
 
 [VTE]
 last_dir=/home/steve/programming/mishmash/osdev

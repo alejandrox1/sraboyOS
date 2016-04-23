@@ -1,7 +1,7 @@
 # Modified from original to make use of cross-dev environment
 
 OBJECTS = loader.o idt_gdt_loader.o isr_helper.o io.o \
-		  kmain.o isr.o vga.o serial.o descriptor_tables.o timer.o
+		  kmain.o isr.o vga.o serial.o descriptor_tables.o timer.o kbd.o
 INC = include
 CC = i686-elf-gcc
 CFLAGS = -ffreestanding -O2 -Wall -Wextra -c -ggdb

@@ -2,6 +2,7 @@
 #include "serial.h"
 #include "stddef.h"
 #include "descriptor_tables.h"
+#include "kbd.h"
 
 int kmain(void) {
 	int x = 0xdeadbeef;
@@ -17,6 +18,7 @@ int kmain(void) {
 	//test_serial_write();
 	//test_interrupts();
 	//init_timer(100); //about 10ms
+	init_kbd();
 
 	return x;
 }
