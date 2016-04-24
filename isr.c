@@ -19,10 +19,10 @@ void irq_handler(struct registers regs) {
 
 void irq_ack(uint32_t int_no) {
     if (int_no >= 40) { //int > 40 = irq > 7
-        print("slave ack\n", 10);
+        //print("slave ack\n", 10);
         outb(PIC2_CMD_PORT, 0x20);    //send reset/ack to slave
     }
-    print("master ack\n", 11);
+    //print("master ack\n", 11);
     outb(PIC1_CMD_PORT, 0x20); //send reset/ack to master (and slave, if needed)
 }
 
