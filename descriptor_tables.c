@@ -1,5 +1,6 @@
 #include "descriptor_tables.h"
 #include "isr.h"
+#include "string.h"
 
 struct gdt_ptr gdt_ptr_t;
 struct gdt_entry gdt_entries[5];
@@ -20,6 +21,8 @@ void init_descriptor_tables() {
 static void init_gdt() {
     gdt_ptr_t.limit = (sizeof(struct gdt_entry) * 5) - 1;
     gdt_ptr_t.base = &gdt_entries;
+
+    memset(&idt_entries, 0, sizeof(struct idt_entry) * 256);
 
     /* Access Byte Format By Bit
      * 7	- is segment present? 1 = yes.
