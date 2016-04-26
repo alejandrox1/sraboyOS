@@ -28,15 +28,11 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=6
+current_page=3
 FILE_NAME_0=185;Make;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2FMakefile;0;4
 FILE_NAME_1=813;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Floader.asm;0;4
-FILE_NAME_2=389;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkmain.c;0;4
-FILE_NAME_3=2515;ASM;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fisr_helper.asm;0;4
-FILE_NAME_4=177;C;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fisr.h;0;4
-FILE_NAME_5=169;C;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fisr.c;0;4
-FILE_NAME_6=183;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkbd.c;0;4
-FILE_NAME_7=6411;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fkbd.h;0;4
+FILE_NAME_2=358;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkmain.c;0;4
+FILE_NAME_3=2033;ASM;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fisr_helper.asm;0;4
 
 [VTE]
 last_dir=/home/steve/programming/mishmash/osdev

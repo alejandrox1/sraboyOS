@@ -18,7 +18,7 @@ int kmain(void) {
 	//test_serial_write();
 	//test_interrupts();
 	//init_timer(100); //about 10ms
-	init_kbd();
+	//init_kbd();
 
 	return x;
 }
