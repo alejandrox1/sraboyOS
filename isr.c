@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include "isr.h"
 #include "io.h"
 #include "vga.h"

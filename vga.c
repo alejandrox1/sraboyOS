@@ -1,6 +1,6 @@
 #include "vga.h"
 #include "io.h"
-#include "stddef.h"
+#include <stdint.h>
 
 #define VGA_BUF_HIGH_BYTE_CMD 0x0e
 #define VGA_BUF_LOW_BYTE_CMD  0x0f

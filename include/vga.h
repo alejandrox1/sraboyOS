@@ -1,7 +1,7 @@
 #ifndef INCLUDE_VGA_H
 #define INCLUDE_VGA_H
 
-#include "stddef.h"
+#include <stdint.h>
 
 enum vga_color {
 	COLOR_BLACK = 0,

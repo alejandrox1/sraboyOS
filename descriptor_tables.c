@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include "descriptor_tables.h"
 #include "isr.h"
 #include "string.h"

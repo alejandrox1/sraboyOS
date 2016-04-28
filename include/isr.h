@@ -1,7 +1,7 @@
 #ifndef INCLUDE_ISR_H
 #define INCLUDE_ISR_H
 
-#include "stddef.h"
+#include <stdint.h>
 
 #define IRQ0 32
 #define IRQ1 33

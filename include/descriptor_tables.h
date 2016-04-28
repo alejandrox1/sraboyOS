@@ -1,7 +1,7 @@
 #ifndef INCLUDE_DESCTABLES_H
 #define INCLUDE_DESCTABLES_H
 
-#include "stddef.h"
+#include <stdint.h>
 
 struct gdt_ptr {
 	uint16_t limit; 		  // size of table minus 1, (last valid addr in table)

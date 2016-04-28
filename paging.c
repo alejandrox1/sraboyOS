@@ -1,5 +1,5 @@
 #include "paging.h"
-#include "stddef.h"
+#include <stdint.h>
 #include "isr.h"
 #include "kernel.h"
 

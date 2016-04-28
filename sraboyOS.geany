@@ -28,11 +28,19 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=3
-FILE_NAME_0=185;Make;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2FMakefile;0;4
-FILE_NAME_1=813;ASM;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Floader.asm;0;4
-FILE_NAME_2=358;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkmain.c;0;4
-FILE_NAME_3=2033;ASM;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fisr_helper.asm;0;4
+current_page=11
+FILE_NAME_0=440;Make;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2FMakefile;0;4
+FILE_NAME_1=402;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkmain.c;0;4
+FILE_NAME_2=984;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fkheap.c;0;4
+FILE_NAME_3=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fkheap.h;0;4
+FILE_NAME_4=878;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fpaging.h;0;4
+FILE_NAME_5=2308;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fpaging.c;0;4
+FILE_NAME_6=0;C;0;EUTF-8;0;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fisr.h;0;4
+FILE_NAME_7=24;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fkernel.h;0;4
+FILE_NAME_8=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fstring.h;0;4
+FILE_NAME_9=683;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fstring.c;0;4
+FILE_NAME_10=261;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Finclude%2Fstdlib.h;0;4
+FILE_NAME_11=545;C;0;EUTF-8;1;1;0;%2Fhome%2Fsteve%2Fprogramming%2FsraboyOS%2Fstdlib.c;0;4
 
 [VTE]
 last_dir=/home/steve/programming/mishmash/osdev

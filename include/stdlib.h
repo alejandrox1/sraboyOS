@@ -1,7 +1,7 @@
 #ifndef INCLUDE_STDLIB_H
 #define INCLUDE_STDLIB_H
 
-#include "stddef.h"
+#include <stdint.h>
 
 void reverse(char * str, int len);
 char * itoa_b(int num, char * str, int base);

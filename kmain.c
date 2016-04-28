@@ -1,6 +1,6 @@
 #include "vga.h"
 #include "serial.h"
-#include "stddef.h"
+#include <stdint.h>
 #include "descriptor_tables.h"
 #include "kbd.h"
 

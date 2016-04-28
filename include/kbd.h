@@ -1,6 +1,7 @@
 #ifndef INCLUDE_KBD_H
 #define INCLUDE_KBD_H
 
+#include <stdint.h>
 #include "isr.h"
 
 enum KEYCODE {

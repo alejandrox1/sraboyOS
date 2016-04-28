@@ -1,7 +1,7 @@
 #ifndef INCLUDE_SERIAL_H
 #define INCLUDE_SERIAL_H
 
-#include "stddef.h"
+#include <stdint.h>
 
 void serial_conf_baud_rate(uint16_t com, uint16_t divisor);
 void serial_conf_line(uint16_t com, uint8_t bitmask);
