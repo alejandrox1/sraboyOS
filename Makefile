@@ -6,7 +6,7 @@ OBJECTS = loader.o idt_gdt_loader.o isr_helper.o io.o \
 		  kbd.o vga.o serial.o timer.o
 INC = include
 CC = i686-elf-gcc
-CFLAGS = -ffreestanding -O2 -Wall -Wextra -c -ggdb
+CFLAGS = -ffreestanding -O2 -Wall -Wextra -c -ggdb -funsigned-char
 LDFLAGS = -T link.ld -ffreestanding -O2 -nostdlib -lgcc
 AS = nasm
 ASFLAGS = -felf32
