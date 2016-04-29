@@ -34,6 +34,7 @@ struct terminal_color {
 
 void put_char(uint8_t c, struct cursor_pos* cpos, struct terminal_color* tcol);
 void move_cursor(uint16_t pos);
-void print(uint8_t * string, int len);
+void print(const char * string, int len);
+void vga_buf_init();
 
 #endif //INCLUDE_VGA_H

@@ -3,6 +3,11 @@
 #include "isr.h"
 #include "string.h"
 
+static void gdt_set_gate(int32_t num, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran);
+static void idt_set_gate(uint8_t num, uint32_t base, uint16_t sel, uint8_t flags);
+static void init_gdt();
+static void init_idt();
+
 struct gdt_ptr gdt_ptr_t;
 struct gdt_entry gdt_entries[5];
 struct idt_ptr idt_ptr_t;

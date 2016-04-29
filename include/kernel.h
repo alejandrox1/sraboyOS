@@ -3,7 +3,8 @@
 
 #include <stdint.h>
 #include "vga.h"
+#include "string.h"
 
-#define PANIC(str, strlen) print(str, strlen);
+#define PANIC(str) print(str, strlen(str));
 
 #endif

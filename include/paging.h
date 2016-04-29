@@ -25,8 +25,8 @@ struct page_directory {
 };
 
 void init_paging();
-void switch_page_directory(struct page_directory *new); //loads pagedir into CR3
-struct page * get_page(uint32_t addr, int make, struct page_directory *dir);
+void switch_page_directory(struct page_directory *dir); //loads pagedir into CR3
+struct page * get_page(uint32_t addr, int make_if_not_exist, struct page_directory *dir);
 void page_fault(struct registers regs);
 
 #endif

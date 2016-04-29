@@ -98,7 +98,7 @@ uint32_t serial_is_xmit_fifo_empty(uint32_t com) {
 	return inb(SERIAL_LINE_STAT_PORT(com)) & 0x20;
 }
 
-void serial_write(uint32_t com, uint8_t * data, int len) {
+void serial_write(uint32_t com, const char * data, int len) {
 	//print("serial_write\n", 13);
 	for(int i = 0; i < len; i++) {
 		serial_put_char(com, data[i]);

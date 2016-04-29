@@ -4,14 +4,14 @@
 #include <stdint.h>
 
 struct gdt_ptr {
-	uint16_t limit; 		  // size of table minus 1, (last valid addr in table)
-	uint32_t base;  // first entry in table
+	uint16_t limit;  // size of table minus 1, (last valid addr in table)
+	uintptr_t base;  // first entry in table
 } __attribute__((packed));
 
 
 struct idt_ptr {
 	uint16_t limit; 		  // size of table minus 1, (last valid addr in table)
-	uint32_t base;  // first entry in table
+	uintptr_t base;  // first entry in table
 } __attribute__((packed));
 
 //see http://web.archive.org/web/20120304220556/http://www.jamesmolloy.co.uk/tutorial_html/4.-The%20GDT%20and%20IDT.html
@@ -50,13 +50,6 @@ struct idt_entry {
 	uint8_t  flags;
 	uint16_t base_high;
 } __attribute__((packed));
-
-
-
-static void init_gdt();
-static void init_idt();
-static void gdt_set_gate(int32_t num, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran);
-static void idt_set_gate(uint8_t num, uint32_t base, uint16_t sel, uint8_t flags);
 
 void init_descriptor_tables();
 

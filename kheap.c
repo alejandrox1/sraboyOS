@@ -4,22 +4,22 @@
 
 #define PG_BIT_ON 0x80000000
 
-uint32_t placement_addr;
+uintptr_t placement_addr;
 
-uint32_t kmalloc_a(uint32_t size) {
+uintptr_t kmalloc_a(uint32_t size) {
 	return _kmalloc_int(size, NULL, 1);
 }
-uint32_t kmalloc_p(uint32_t size, uint32_t * phys) {
+uintptr_t kmalloc_p(uint32_t size, uint32_t * phys) {
 	return _kmalloc_int(size, phys, NULL);
 }
-uint32_t kmalloc_ap(uint32_t size, uint32_t * phys) {
+uintptr_t kmalloc_ap(uint32_t size, uint32_t * phys) {
 	return _kmalloc_int(size, phys, 1);
 }
-uint32_t kmalloc(uint32_t size) {
+uintptr_t kmalloc(uint32_t size) {
 	return _kmalloc_int(size, NULL, NULL);
 }
 
-static uint32_t _kmalloc_int(uint32_t size, uint32_t * phys, uint8_t align) {
+static uintptr_t _kmalloc_int(uint32_t size, uint32_t * phys, uint8_t align) {
 	// Page-align it, if needed. The & operation
 	// verifies the bottom 12 bits are 0, which is
 	// the case for memory addresses on a 4KB boundary

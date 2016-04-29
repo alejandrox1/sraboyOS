@@ -8,6 +8,6 @@ void serial_conf_line(uint16_t com, uint8_t bitmask);
 void serial_conf_buff(uint16_t com, uint8_t bitmask);
 void serial_conf_modem(uint16_t com, uint8_t bitmask);
 uint32_t serial_is_xmit_fifo_empty(uint32_t com);
-void serial_write(uint32_t com, uint8_t * data, int len);
+void serial_write(uint32_t com, const char * data, int len);
 
 #endif

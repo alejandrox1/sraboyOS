@@ -95,7 +95,7 @@ void move_cursor(uint16_t pos) {
  * 	@param string	the string to print
  *  @param len		the length of the string, excluding null terminator
  */
-void print(uint8_t * string, int len) {
+void print(const char * string, int len) {
 	for(int i = 0; i < len; i++) {
 		put_char(string[i], &cursor_pos_t, &terminal_color_t);
 	}

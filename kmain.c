@@ -1,8 +1,10 @@
+#include <stdint.h>
+
 #include "vga.h"
 #include "serial.h"
-#include <stdint.h>
 #include "descriptor_tables.h"
 #include "kbd.h"
+#include "paging.h"
 
 int kmain(void) {
 	int x = 0xdeadbeef;
@@ -35,7 +37,7 @@ void test_serial_write() {
 	serial_conf_buff(port, 0xc7);
 	serial_conf_modem(port, 0xb);
 
-	uint8_t * stuff = "stuff";
+	const char * stuff = "stuff";
 	serial_write(port, stuff, 5);
 }
 

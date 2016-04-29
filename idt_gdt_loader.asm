@@ -28,7 +28,7 @@ load_gdt:
 ; two bits are the privilege level: 00 = highest, 11 = lowest.
 .reload_cs:
    jmp   0x08:.flush ; 0x08 = new code selector
-.flush
+.flush:
    ret
 
 
