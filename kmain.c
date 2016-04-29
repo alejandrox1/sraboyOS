@@ -15,12 +15,14 @@ int kmain(void) {
 
 	init_descriptor_tables();
 	print("Descriptor Tables Loaded!\n", 26);
+	init_kbd();
+	//init_paging();
 
 	//test_scroll();
 	//test_serial_write();
 	//test_interrupts();
 	//init_timer(100); //about 10ms
-	//init_kbd();
+
 
 	return x;
 }
