@@ -127,12 +127,11 @@ void init_paging() {
 	memset(frames, 0, INDEX_FROM_BIT(nframes));
 
 	//allocate page-aligned mem for directory
-	uint32_t phys;
-	kernel_directory = (struct page_directory *)kmalloc_ap(sizeof(struct page_directory), &phys);
+	kernel_directory = (struct page_directory *)kmalloc_a(sizeof(struct page_directory));
 	memset(kernel_directory, 0, sizeof(struct page_directory));
 	current_directory = kernel_directory;
 
-	//identity map the kernel
+	//identity map everything for easier use in the kernel
 	int i = 0;
 	while (i < placement_addr) { //while, not for, since we change placement_addr
 		alloc_frame(get_page(i, 1, kernel_directory), 0, 0);

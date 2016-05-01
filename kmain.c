@@ -14,16 +14,21 @@ int kmain(void) {
 	print("welcome!\n", 9);
 
 	init_descriptor_tables();
-	print("Descriptor Tables Loaded!\n", 26);
+	char * msg = "Descriptor Tables Loaded\n";
+	print(msg, strlen(msg));
+
 	init_kbd();
+	msg = "Keyboard Initialized\n";
+	print(msg, strlen(msg));
+
 	//init_paging();
+	//msg = "Paging Initialized\n";
+	//print(msg, strlen(msg));
 
 	//test_scroll();
 	//test_serial_write();
 	//test_interrupts();
 	//init_timer(100); //about 10ms
-
-
 	return x;
 }
 
