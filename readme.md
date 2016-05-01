@@ -48,3 +48,33 @@ Run GDB:
  - `target remote localhost:1234`
  - `file kernel.elf` loads debugging symbols from the file
  - `set disassembly-flavor intel` (if you're so inclined, you can put this in .gdbinit)
+
+# References & Tutorials
+
+There are a lot of great resources out there but not many good tutorials. Most of the tutorials gloss over the code or gloss over the contents, or both; it forces you to spend time reading about theory and finding other implementations of concepts but it can be a pain when you just want X to work so you can learn about Y.
+
+This is just a list of some of the great stuff I've found online, including others' toy kernels. For better or worse, many of them are based on the same few tutorials found elsewhere so, often, the code is easy enough to follow.
+
+ - [Little OS Book](https://littleosbook.github.io/) - May not be maintained anymore, as of late 2015. There are some bugs referenced on the [GitHub repo](https://github.com/littleosbook/littleosbook). It starts off with a lot of example code but then tapers off by only providing theory and leaving you to your own devices. It was great to get me started but I needed a bit more help on interrupts and memory management.
+
+ - [aenix](https://github.com/helino/aenix) from the authors of the Little OS Book tutorial.
+
+ - [OSDev.org](http://wiki.osdev.org/Main_Page) - The best resource on the net, with dozens of tutorials and even several pages (linked below) providing information on bugs in other tutorials.
+
+ - [James Molloy's Tutorial](http://web.archive.org/web/20120223002615/http://www.jamesmolloy.co.uk/tutorial_html/1.-Environment%20setup.html) - [No longer maintained](http://forum.osdev.org/viewtopic.php?f=1&t=23072&start=0) but a great intro nonetheless. Newer, working code is in the [Google Code repo](https://code.google.com/archive/p/jamesm-tutorials/), but it doesn't match the tutorial. Since Google Code was decommissioned, you can only download a ZIP or export to GitHub; there's no online browsing of the SVN repo.
+
+ - [Boom](https://github.com/BiggerOnTheInside/Boom) - A toy kernel based on JM's tutorial.
+
+ - [Bare Metal Examples](https://github.com/cirosantilli/x86-bare-metal-examples) - Multiple toy OSes for reference.
+
+ - [Bran's Kernel Dev Tutorial](http://www.osdever.net/bkerndev/Docs/title.htm) - Great tutorial, also with [known bugs](http://wiki.osdev.org/Bran's_Known_Bugs).
+
+ - [MIT's Xv6](https://pdos.csail.mit.edu/6.828/2011/xv6.html) - Unix-like OS used to teach OS development at MIT.
+
+ - [XOmB-barebones](https://github.com/xomboverlord/xomb-bare-bones) - Barebones x64 kernel written in D.
+
+ - [ToaruOS](https://github.com/klange/toaruos) - Much more complex than all the others above but it's a genuinely functional Unix-like OS with a fantastic desktop environment and even some application ports, including GCC and Bochs, which means it can be self-hosting!
+
+# Git Tags
+
+See the [Releases tab](https://github.com/sraboy/sraboyOS/tags) for tagged commits that contain working code, to see how something was implemented at that point. Checkout the actual commits in a tag to see what had changed and why. Tags v0.01 - v0.04 were primarily based on the Little OS Book, James Molloy's tutorial and OSDev's Barebones Tutorial. After that, you'll notice a divergence as the more advanced topics started to come into play. Those previous tutorials were still useful but presented some problems due to architectural choices and bugs.
