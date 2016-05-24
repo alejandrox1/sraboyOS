@@ -21,9 +21,9 @@ int kmain(void) {
 	msg = "Keyboard Initialized\n";
 	print(msg, strlen(msg));
 
-	//init_paging();
-	//msg = "Paging Initialized\n";
-	//print(msg, strlen(msg));
+	init_paging();
+	msg = "Paging Initialized\n";
+	print(msg, strlen(msg));
 
 	//test_scroll();
 	//test_serial_write();
