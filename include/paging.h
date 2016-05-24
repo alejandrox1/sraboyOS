@@ -21,7 +21,7 @@ struct page_table {
 struct page_directory {
 	struct page_table *tables[1024];
 	uint32_t tables_phys[1024]; //array of tables' physical addresses
-	uint32_t physical_addr; 	//addr of tables_phys
+	uint32_t physical_addr_UNUSED_FOR_NOW; 	//addr of tables_phys
 };
 
 void init_paging();
