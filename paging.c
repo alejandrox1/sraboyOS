@@ -80,7 +80,7 @@ void free_frame(struct page * page) {
 	}
 }
 
-void switch_page_directory(struct page_directory *dir) {
+void __attribute__ ((noinline)) switch_page_directory(struct page_directory *dir) {
 	current_directory = dir;
 	asm volatile("mov %0, %%cr3":: "r"(&dir->tables_phys));
 	uint32_t cr0;
